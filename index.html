@@ -1,50 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CSE2000</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://unpkg.com/lucide@latest"></script>
-<style>
-  @keyframes blob {
-    0% { transform: translate(0px, 0px) scale(1); }
-    33% { transform: translate(30px, -50px) scale(1.1); }
-    66% { transform: translate(-20px, 20px) scale(0.9); }
-    100% { transform: translate(0px, 0px) scale(1); }
-  }
-  .animate-blob {
-    animation: blob 7s infinite;
-  }
-  .animation-delay-2000 {
-    animation-delay: 2s;
-  }
-  .animation-delay-4000 {
-    animation-delay: 4s;
-  }
-  .glass-panel {
-    background: rgba(15, 23, 42, 0.6);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-  }
-  .text-glow {
-    text-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
-  }
-  @keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-  }
-  @keyframes blink {
-    50% { border-color: transparent }
-  }
-  html {
-    scroll-behavior: smooth;
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSE2000 - Professional Software Team</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    @keyframes blob {
+      0% { transform: translate(0px, 0px) scale(1); }
+      33% { transform: translate(30px, -50px) scale(1.1); }
+      66% { transform: translate(-20px, 20px) scale(0.9); }
+      100% { transform: translate(0px, 0px) scale(1); }
+    }
+    .animate-blob {
+      animation: blob 7s infinite;
+    }
+    .animation-delay-2000 {
+      animation-delay: 2s;
+    }
+    .animation-delay-4000 {
+      animation-delay: 4s;
+    }
+    .glass-panel {
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .text-glow {
+      text-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
+    }
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
 </head>
 <body class="min-h-screen bg-slate-950 text-slate-50 font-sans selection:bg-cyan-500 selection:text-slate-900 overflow-x-hidden">
 
+  <!-- Navigation -->
   <div class="fixed top-0 w-full z-50 glass-panel border-b-0 shadow-lg shadow-black/20 select-none">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
       <a href="#" class="text-xl font-bold tracking-tighter flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity">
@@ -71,6 +72,7 @@
     </div>
   </div>
 
+  <!-- Hero Section -->
   <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg h-[400px] bg-cyan-500/30 rounded-full blur-[120px] mix-blend-screen pointer-events-none"></div>
     <div class="absolute top-1/4 left-1/4 w-72 h-72 bg-purple-500/30 rounded-full blur-[100px] animate-blob mix-blend-screen pointer-events-none"></div>
@@ -94,10 +96,10 @@
       </p>
       
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 select-none">
-        <a href="#about" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold tracking-wide hover:shadow-[0_0_30px_-5px_rgba(34,211,238,0.5)] transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
+        <a href="#about" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold tracking-wide hover:shadow-[0_0_30px_-5px_rgba(34,211,238,0.5)] transition-all duration-300 transform hover:-translate-y-1 cursor-pointer text-center">
           Why Choose Us
         </a>
-        <a href="#team" class="w-full sm:w-auto px-8 py-4 rounded-full glass-panel hover:bg-slate-800 transition-all duration-300 font-bold tracking-wide border border-slate-700 cursor-pointer">
+        <a href="#team" class="w-full sm:w-auto px-8 py-4 rounded-full glass-panel hover:bg-slate-800 transition-all duration-300 font-bold tracking-wide border border-slate-700 cursor-pointer text-center">
           Meet the Team
         </a>
       </div>
@@ -108,6 +110,7 @@
     </a>
   </section>
 
+  <!-- Motivation Section -->
   <section id="about" class="py-16 lg:py-24 relative z-10 bg-slate-900/50 border-y border-slate-800">
     <div class="max-w-7xl mx-auto px-6">
       <div class="reveal-section transition-all duration-1000 transform opacity-0 translate-y-16">
@@ -145,6 +148,7 @@
     </div>
   </section>
 
+  <!-- Terminal Section -->
   <section class="py-16 lg:py-24 relative z-10 overflow-hidden">
     <div class="max-w-7xl mx-auto px-6">
       <div class="reveal-section transition-all duration-1000 transform opacity-0 translate-y-16">
@@ -190,18 +194,20 @@
           </div>
         </div>
       </div>
+    </div>
   </section>
 
+  <!-- Team Section -->
   <section id="team" class="py-16 lg:py-32 relative z-10 bg-slate-900/30 border-t border-slate-800">
     <div class="max-w-7xl mx-auto px-6">
       <div class="reveal-section transition-all duration-1000 transform opacity-0 translate-y-16">
         <div class="text-center mb-12 lg:mb-20">
           <h2 class="text-4xl md:text-6xl font-bold mb-6 select-none cursor-default">Meet The <span class="text-cyan-400">Team</span></h2>
-          <!-- <p class="text-slate-400 max-w-2xl mx-auto text-lg">Passionate, curious, and ready to code. Get to know the team behind the application.</p> -->
         </div>
 
         <div class="flex flex-wrap justify-center gap-6 lg:gap-8">
           
+          <!-- Team Member 1 -->
           <div class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-sm glass-panel rounded-3xl overflow-hidden border border-slate-800 hover:border-cyan-500/30 transition-all duration-500 group flex flex-col">
             <div class="h-64 overflow-hidden relative select-none">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent z-10"></div>
@@ -215,13 +221,14 @@
                 <a href="https://www.linkedin.com/in/assafg" class="text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-1 text-sm font-semibold cursor-pointer">
                   <i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn
                 </a>
-                <a href="assaf.pdf" class="text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-1 text-sm font-semibold ml-auto cursor-pointer">
+                <a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-1 text-sm font-semibold ml-auto cursor-pointer">
                   <i data-lucide="external-link" class="w-4 h-4"></i> Resume
                 </a>
               </div>
             </div>
           </div>
 
+          <!-- Team Member 2 -->
           <div class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-sm glass-panel rounded-3xl overflow-hidden border border-slate-800 hover:border-cyan-500/30 transition-all duration-500 group flex flex-col">
             <div class="h-64 overflow-hidden relative select-none">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent z-10"></div>
@@ -232,7 +239,7 @@
               <p class="text-cyan-400 font-medium text-sm mb-4 select-none cursor-default">Data & Algorithms</p>
               <p class="text-slate-400 text-sm leading-relaxed mb-6 min-h-[80px]">I have always been interested in puzzles and logic. Since an early age, I designed, developed and deployed full stack web and mobile applications (primarily, but not only, in the MERN framework), and participated in various national and international informatics olympiads, representing, and even winning a bronze medal for Portugal. I have since enrolled in TU Delft to further my education, and got two internship offers with BNY and Amazon. I am also very interested in Data Science & AI, which I have been extensively studying extracurricularly since the start of this academic year.</p>
               <div class="flex items-center gap-4 pt-4 border-t border-slate-800 select-none mt-auto">
-                <a href="https://www.linkedin.com/in/diego-ferreira-0597ba32b?utm_source=share_via&utm_content=profile&utm_medium=member_ios" class="text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-1 text-sm font-semibold cursor-pointer">
+                <a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-1 text-sm font-semibold cursor-pointer">
                   <i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn
                 </a>
                 <a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-1 text-sm font-semibold ml-auto cursor-pointer">
@@ -242,15 +249,16 @@
             </div>
           </div>
 
+          <!-- Team Member 3 -->
           <div class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-sm glass-panel rounded-3xl overflow-hidden border border-slate-800 hover:border-cyan-500/30 transition-all duration-500 group flex flex-col">
             <div class="h-64 overflow-hidden relative select-none">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent z-10"></div>
-              <img src="" alt="Altar"draggable="false" class="w-full h-full object-cover object-center group-hover:scale-110 transition-all duration-700 grayscale-0 md:grayscale md:group-hover:grayscale-0 select-none cursor-default" />
+              <img src="altar.png" alt="Altar" draggable="false" class="w-full h-full object-cover object-center group-hover:scale-110 transition-all duration-700 grayscale-0 md:grayscale md:group-hover:grayscale-0 select-none cursor-default" />
             </div>
             <div class="p-8 pt-6 relative z-20 flex flex-col flex-grow">
               <h3 class="text-2xl font-bold mb-1 select-none cursor-default">Altar</h3>
               <p class="text-cyan-400 font-medium text-sm mb-4 select-none cursor-default">role</p>
-              <p class="text-slate-400 text-sm leading-relaxed mb-6 min-h-[80px]">description</p>
+              <p class="text-slate-400 text-sm leading-relaxed mb-6 min-h-[80px]"></p>
               <div class="flex items-center gap-4 pt-4 border-t border-slate-800 select-none mt-auto">
                 <a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-1 text-sm font-semibold cursor-pointer">
                   <i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn
@@ -262,15 +270,16 @@
             </div>
           </div>
 
+          <!-- Team Member 4 -->
           <div class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-sm glass-panel rounded-3xl overflow-hidden border border-slate-800 hover:border-cyan-500/30 transition-all duration-500 group flex flex-col">
             <div class="h-64 overflow-hidden relative select-none">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent z-10"></div>
-              <img src="" alt="Gustavo Bastos" draggable="false" class="w-full h-full object-cover object-center group-hover:scale-110 transition-all duration-700 grayscale-0 md:grayscale md:group-hover:grayscale-0 select-none cursor-default" />
+              <img src="gustavo.png" alt="Gustavo Bastos" draggable="false" class="w-full h-full object-cover object-center group-hover:scale-110 transition-all duration-700 grayscale-0 md:grayscale md:group-hover:grayscale-0 select-none cursor-default" />
             </div>
             <div class="p-8 pt-6 relative z-20 flex flex-col flex-grow">
               <h3 class="text-2xl font-bold mb-1 select-none cursor-default">Gustavo Bastos</h3>
-              <p class="text-cyan-400 font-medium text-sm mb-4 select-none cursor-default">role</p>
-              <p class="text-slate-400 text-sm leading-relaxed mb-6 min-h-[80px]">description</p>
+              <p class="text-cyan-400 font-medium text-sm mb-4 select-none cursor-default">Frontend Developer</p>
+              <p class="text-slate-400 text-sm leading-relaxed mb-6 min-h-[80px]"></p>
               <div class="flex items-center gap-4 pt-4 border-t border-slate-800 select-none mt-auto">
                 <a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-1 text-sm font-semibold cursor-pointer">
                   <i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn
@@ -282,20 +291,21 @@
             </div>
           </div>
 
+          <!-- Team Member 5 -->
           <div class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-sm glass-panel rounded-3xl overflow-hidden border border-slate-800 hover:border-cyan-500/30 transition-all duration-500 group flex flex-col">
             <div class="h-64 overflow-hidden relative select-none">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent z-10"></div>
-              <img src="vlad.png" alt="Vlad" draggable="false" class="w-full h-full object-cover object-center group-hover:scale-110 transition-all duration-700 grayscale-0 md:grayscale md:group-hover:grayscale-0 select-none cursor-default" />
+              <img src="vlad.png" alt="Vlad Manea" draggable="false" class="w-full h-full object-cover object-center group-hover:scale-110 transition-all duration-700 grayscale-0 md:grayscale md:group-hover:grayscale-0 select-none cursor-default" />
             </div>
             <div class="p-8 pt-6 relative z-20 flex flex-col flex-grow">
               <h3 class="text-2xl font-bold mb-1 select-none cursor-default">Vlad Manea</h3>
-              <p class="text-cyan-400 font-medium text-sm mb-4 select-none cursor-default">role</p>
+              <p class="text-cyan-400 font-medium text-sm mb-4 select-none cursor-default">Backend Developer</p>
               <p class="text-slate-400 text-sm leading-relaxed mb-6 min-h-[80px]">I'm a Computer Science student at TU Delft with a deep passion for problem solving and open-source development. Aside from open-source, I also have experience with building solutions for companies, such as the development of optimization tools for logistics activities and a performance tracking dashboard, both currently used internally at a French company. I'm constantly looking for opportunities to improve my skills and knowledge by making practical, efficient software in various fields and for different purposes.</p>
               <div class="flex items-center gap-4 pt-4 border-t border-slate-800 select-none mt-auto">
-                <a href="https://www.linkedin.com/in/vlad-manea-85b649391" class="text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-1 text-sm font-semibold cursor-pointer">
+                <a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-1 text-sm font-semibold cursor-pointer">
                   <i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn
                 </a>
-                <a href="vlad.pdf" class="text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-1 text-sm font-semibold ml-auto cursor-pointer">
+                <a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-1 text-sm font-semibold ml-auto cursor-pointer">
                   <i data-lucide="external-link" class="w-4 h-4"></i> Resume
                 </a>
               </div>
@@ -307,13 +317,25 @@
     </div>
   </section>
 
-  <footer class="py-8 border-t border-slate-800 bg-slate-950 text-center text-slate-500 text-sm select-none">
-    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 cursor-default">
-      <p>© 2026</p>
-      <div class="flex gap-6">
-        <i data-lucide="github" class="w-5 h-5 hover:text-slate-300 cursor-pointer transition-colors"></i>
-        <i data-lucide="linkedin" class="w-5 h-5 hover:text-slate-300 cursor-pointer transition-colors"></i>
+  <!-- Footer -->
+  <footer class="py-6 border-t border-slate-800 bg-slate-950/80 backdrop-blur-md relative z-10">
+    <div class="max-w-7xl mx-auto px-6 flex flex-row items-center justify-between gap-4 select-none">
+      <div class="flex flex-col items-center md:items-start gap-2">
+        <a href="#" class="text-lg font-bold tracking-tighter flex items-center gap-2 hover:opacity-80 transition-opacity">
+          <i data-lucide="code" class="text-cyan-400 w-5 h-5"></i>
+          <span>CSE<span class="text-cyan-400">2000</span></span>
+        </a>
+        <!-- <p class="text-slate-500 text-xs">TU Delft CSE2000 - Software Project</p> -->
       </div>
+
+      <!-- <div class="flex flex-col items-center gap-4">
+        <p class="text-slate-400 text-sm font-medium collapse">Built with precision.</p>
+      </div> -->
+
+      <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="group flex items-center gap-2 px-5 py-2.5 rounded-full glass-panel text-slate-400 hover:text-cyan-400 hover:border-cyan-500/50 transition-all duration-300 text-sm font-bold border border-slate-800">
+        Back to Top
+        <i data-lucide="arrow-up" class="w-4 h-4 group-hover:-translate-y-1 transition-transform"></i>
+      </button>
     </div>
   </footer>
 
@@ -342,6 +364,7 @@
       });
     });
 
+    // Reveal on Scroll Logic
     const revealElements = document.querySelectorAll('.reveal-section');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -355,6 +378,7 @@
 
     revealElements.forEach(el => observer.observe(el));
 
+    // Terminal Logic
     let termStep = 0;
     const termLines = [
       document.getElementById('term-1'),
