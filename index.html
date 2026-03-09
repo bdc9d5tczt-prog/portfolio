@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TU Delft CSE Software Team</title>
+<title>CSE2000</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://unpkg.com/lucide@latest"></script>
 <style>
@@ -51,10 +51,23 @@
         <i data-lucide="code" class="text-cyan-400"></i>
         <span>CSE<span class="text-cyan-400">2000</span></span>
       </a>
+      
+      <!-- Desktop Menu -->
       <div class="hidden md:flex gap-8 text-sm font-medium text-slate-300">
         <a href="#about" class="hover:text-cyan-400 transition-colors cursor-pointer">Our Motivation</a>
         <a href="#team" class="hover:text-cyan-400 transition-colors cursor-pointer">Meet the Team</a>
       </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="md:hidden flex items-center justify-center text-slate-300 hover:text-cyan-400 transition-colors cursor-pointer p-2">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden absolute top-20 left-0 w-full glass-panel border-t border-slate-800 shadow-xl flex-col items-center py-6 gap-6 text-base font-medium text-slate-300 md:hidden">
+      <a href="#about" class="mobile-link hover:text-cyan-400 transition-colors cursor-pointer w-full text-center py-2">Our Motivation</a>
+      <a href="#team" class="mobile-link hover:text-cyan-400 transition-colors cursor-pointer w-full text-center py-2">Meet the Team</a>
     </div>
   </div>
 
@@ -212,26 +225,6 @@
           <div class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-sm glass-panel rounded-3xl overflow-hidden border border-slate-800 hover:border-cyan-500/30 transition-all duration-500 group flex flex-col">
             <div class="h-64 overflow-hidden relative select-none">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent z-10"></div>
-              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=500&q=80" alt="Altar"draggable="false" class="w-full h-full object-cover object-center group-hover:scale-110 transition-all duration-700 grayscale group-hover:grayscale-0 select-none cursor-default" />
-            </div>
-            <div class="p-8 pt-6 relative z-20 flex flex-col flex-grow">
-              <h3 class="text-2xl font-bold mb-1 select-none cursor-default">Altar</h3>
-              <p class="text-cyan-400 font-medium text-sm mb-4 select-none cursor-default">Frontend Enthusiast</p>
-              <p class="text-slate-400 text-sm leading-relaxed mb-6 min-h-[80px]">Bridging the gap between engineering and design. Fluent in modern React ecosystems and Tailwind, creating intuitive, responsive UX that users actually enjoy.</p>
-              <div class="flex items-center gap-4 pt-4 border-t border-slate-800 select-none mt-auto">
-                <a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-1 text-sm font-semibold cursor-pointer">
-                  <i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn
-                </a>
-                <a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-1 text-sm font-semibold ml-auto cursor-pointer">
-                  <i data-lucide="external-link" class="w-4 h-4"></i> Resume
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-sm glass-panel rounded-3xl overflow-hidden border border-slate-800 hover:border-cyan-500/30 transition-all duration-500 group flex flex-col">
-            <div class="h-64 overflow-hidden relative select-none">
-              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent z-10"></div>
               <img src="diego.png" alt="Diego Ferreira" draggable="false" class="w-full h-full object-cover object-center group-hover:scale-110 transition-all duration-700 grayscale group-hover:grayscale-0 select-none cursor-default" />
             </div>
             <div class="p-8 pt-6 relative z-20 flex flex-col flex-grow">
@@ -252,12 +245,12 @@
           <div class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-sm glass-panel rounded-3xl overflow-hidden border border-slate-800 hover:border-cyan-500/30 transition-all duration-500 group flex flex-col">
             <div class="h-64 overflow-hidden relative select-none">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent z-10"></div>
-              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80" alt="Gustavo Bastos" draggable="false" class="w-full h-full object-cover object-center group-hover:scale-110 transition-all duration-700 grayscale group-hover:grayscale-0 select-none cursor-default" />
+              <img src="" alt="Altar"draggable="false" class="w-full h-full object-cover object-center group-hover:scale-110 transition-all duration-700 grayscale group-hover:grayscale-0 select-none cursor-default" />
             </div>
             <div class="p-8 pt-6 relative z-20 flex flex-col flex-grow">
-              <h3 class="text-2xl font-bold mb-1 select-none cursor-default">Gustavo Bastos</h3>
-              <p class="text-cyan-400 font-medium text-sm mb-4 select-none cursor-default">Systems Explorer</p>
-              <p class="text-slate-400 text-sm leading-relaxed mb-6 min-h-[80px]">Automates our entire workflow. While others manually deploy, she builds GitHub Actions pipelines so we can push to production on Fridays without fear.</p>
+              <h3 class="text-2xl font-bold mb-1 select-none cursor-default">Altar</h3>
+              <p class="text-cyan-400 font-medium text-sm mb-4 select-none cursor-default">role</p>
+              <p class="text-slate-400 text-sm leading-relaxed mb-6 min-h-[80px]">description</p>
               <div class="flex items-center gap-4 pt-4 border-t border-slate-800 select-none mt-auto">
                 <a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-1 text-sm font-semibold cursor-pointer">
                   <i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn
@@ -272,12 +265,32 @@
           <div class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-sm glass-panel rounded-3xl overflow-hidden border border-slate-800 hover:border-cyan-500/30 transition-all duration-500 group flex flex-col">
             <div class="h-64 overflow-hidden relative select-none">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent z-10"></div>
-              <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=500&q=80" alt="Vlad" draggable="false" class="w-full h-full object-cover object-center group-hover:scale-110 transition-all duration-700 grayscale group-hover:grayscale-0 select-none cursor-default" />
+              <img src="" alt="Gustavo Bastos" draggable="false" class="w-full h-full object-cover object-center group-hover:scale-110 transition-all duration-700 grayscale group-hover:grayscale-0 select-none cursor-default" />
+            </div>
+            <div class="p-8 pt-6 relative z-20 flex flex-col flex-grow">
+              <h3 class="text-2xl font-bold mb-1 select-none cursor-default">Gustavo Bastos</h3>
+              <p class="text-cyan-400 font-medium text-sm mb-4 select-none cursor-default">role</p>
+              <p class="text-slate-400 text-sm leading-relaxed mb-6 min-h-[80px]">description</p>
+              <div class="flex items-center gap-4 pt-4 border-t border-slate-800 select-none mt-auto">
+                <a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-1 text-sm font-semibold cursor-pointer">
+                  <i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn
+                </a>
+                <a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-1 text-sm font-semibold ml-auto cursor-pointer">
+                  <i data-lucide="external-link" class="w-4 h-4"></i> Resume
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-sm glass-panel rounded-3xl overflow-hidden border border-slate-800 hover:border-cyan-500/30 transition-all duration-500 group flex flex-col">
+            <div class="h-64 overflow-hidden relative select-none">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent z-10"></div>
+              <img src="" alt="Vlad" draggable="false" class="w-full h-full object-cover object-center group-hover:scale-110 transition-all duration-700 grayscale group-hover:grayscale-0 select-none cursor-default" />
             </div>
             <div class="p-8 pt-6 relative z-20 flex flex-col flex-grow">
               <h3 class="text-2xl font-bold mb-1 select-none cursor-default">Vlad</h3>
-              <p class="text-cyan-400 font-medium text-sm mb-4 select-none cursor-default">AI Student</p>
-              <p class="text-slate-400 text-sm leading-relaxed mb-6 min-h-[80px]">The ultimate problem solver. Whether it's integrating an external API or debugging a race condition, he bridges the gap between complex logic and practical implementation.</p>
+              <p class="text-cyan-400 font-medium text-sm mb-4 select-none cursor-default">role</p>
+              <p class="text-slate-400 text-sm leading-relaxed mb-6 min-h-[80px]">description</p>
               <div class="flex items-center gap-4 pt-4 border-t border-slate-800 select-none mt-auto">
                 <a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-1 text-sm font-semibold cursor-pointer">
                   <i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn
@@ -306,6 +319,28 @@
 
   <script>
     lucide.createIcons();
+
+    // Mobile Menu Logic
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      if (mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.remove('hidden');
+        mobileMenu.classList.add('flex');
+      } else {
+        mobileMenu.classList.add('hidden');
+        mobileMenu.classList.remove('flex');
+      }
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        mobileMenu.classList.remove('flex');
+      });
+    });
 
     const revealElements = document.querySelectorAll('.reveal-section');
     const observer = new IntersectionObserver((entries) => {
