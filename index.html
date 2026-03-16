@@ -54,8 +54,8 @@
         }
 
         .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            margin-bottom: 2.5rem;
             text-align: center;
         }
 
@@ -63,11 +63,11 @@
         .container {
             max-width: 1280px;
             margin: 0 auto;
-            padding: 0 5%;
+            padding: 0 6%;
         }
 
         .section-padding {
-            padding: 6rem 0;
+            padding: clamp(4rem, 10vw, 6rem) 0;
         }
 
         .section-separator {
@@ -80,7 +80,7 @@
 
         /* === 4. Navigation === */
         nav {
-            padding: 2rem 5%;
+            padding: 1.5rem 6%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -92,7 +92,7 @@
         }
 
         .logo {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
             letter-spacing: -0.5px;
         }
@@ -103,22 +103,29 @@
 
         /* === 5. Hero Section === */
         .hero {
-            min-height: 90vh;
+            min-height: 85vh;
             display: flex;
             align-items: center;
             position: relative;
+            padding-top: 80px;
         }
 
         .hero h1 {
-            font-size: clamp(3rem, 6vw, 4.5rem);
-            letter-spacing: -1px;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            letter-spacing: -1.5px;
             margin-bottom: 1.5rem;
         }
 
         .hero p {
-            font-size: 1.25rem;
+            font-size: clamp(1rem, 3vw, 1.25rem);
             max-width: 650px;
             margin-bottom: 2.5rem;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .btn {
@@ -127,6 +134,7 @@
             border-radius: 6px;
             font-weight: 500;
             cursor: pointer;
+            text-align: center;
         }
 
         .btn-primary {
@@ -135,29 +143,24 @@
             border: 1px solid var(--accent);
         }
 
-        .btn-primary:hover {
-            background-color: var(--accent-hover);
-            transform: translateY(-2px);
-        }
-
         .btn-secondary {
             background-color: transparent;
             border: 1px solid var(--border-color);
-            margin-left: 1rem;
         }
 
-        /* === 7. Team Roster === */
+        /* === 7. Team Roster (FIXED TO CENTER 5 MEMBERS) === */
         .team-grid {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
-            gap: 2.5rem;
+            justify-content: center; /* This centers the items on all rows */
+            gap: 2rem;
         }
 
         .team-member {
             position: relative;
-            flex: 0 1 380px;
-            height: 600px;
+            flex: 1 1 350px; /* Allows cards to grow/shrink but centers them */
+            max-width: 380px;
+            height: 550px;
             background-color: var(--bg-card);
             border-radius: 16px;
             border: 1px solid var(--border-color);
@@ -181,21 +184,16 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            padding: 2.5rem;
+            padding: 2rem;
             background: linear-gradient(to top,
                 rgba(11, 15, 25, 0.98) 0%,
-                rgba(11, 15, 25, 0.85) 40%,
+                rgba(11, 15, 25, 0.85) 45%,
                 rgba(11, 15, 25, 0) 100%);
             transition: var(--transition-smooth);
         }
 
-        .info-static {
-            z-index: 2;
-            transition: transform 0.5s ease;
-        }
-
         .info-static h3 {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             margin-bottom: 0.2rem;
         }
 
@@ -206,100 +204,91 @@
             display: flex;
             flex-direction: column;
             transition: all 0.5s ease;
-            transform: translateY(20px);
+            transform: translateY(15px);
         }
 
         .member-bio {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             line-height: 1.6;
-            margin-top: 1.5rem;
+            margin-top: 1.2rem;
             color: #cbd5e1;
             overflow-y: auto;
             padding-right: 5px;
         }
 
-        .member-bio::-webkit-scrollbar {
-            width: 4px;
-        }
-
-        .member-bio::-webkit-scrollbar-thumb {
-            background: var(--accent);
-            border-radius: 10px;
-        }
-
         .member-links {
             display: flex;
-            gap: 1.2rem;
+            gap: 1rem;
             margin-top: auto;
-            padding-top: 1.5rem;
+            padding-top: 1.2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .member-links a {
             color: var(--accent);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
         }
 
-        .member-links a:hover {
-            color: var(--accent-hover);
+        /* Hover & Touch States */
+        @media (hover: hover) {
+            .team-member:hover {
+                border-color: var(--accent);
+                transform: translateY(-8px);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            }
+            .team-member:hover .member-image {
+                filter: grayscale(0%);
+                transform: scale(1.05);
+            }
+            .team-member:hover .info-reveal {
+                max-height: 400px;
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        /* Hover States */
-        .team-member:hover {
-            border-color: var(--accent);
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-        }
-
-        .team-member:hover .member-image {
-            filter: grayscale(0%);
-            transform: scale(1.05);
-        }
-
-        .team-member:hover .member-info {
-            background: rgba(11, 15, 25, 0.95);
-        }
-
-        .team-member:hover .info-reveal {
-            max-height: 450px;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* === 8. Footer === */
-        footer {
-            text-align: center;
-            padding: 4rem 5%;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+        /* Mobile specific adjustments */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 70vh;
+                text-align: center;
+            }
+            .hero p {
+                margin: 0 auto 2.5rem;
+            }
+            .btn-group {
+                justify-content: center;
+            }
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            .team-member {
+                height: 500px;
+                flex: 1 1 100%; /* Full width on mobile */
+            }
+            .info-reveal {
+                max-height: 350px;
+                opacity: 1;
+                transform: translateY(0);
+            }
+            .member-image {
+                filter: grayscale(0%);
+            }
         }
 
         /* === 9. Animations === */
         .fade-in {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(20px);
             transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
-        }
-
-        @media (max-width: 768px) {
-            .team-member {
-                flex: 1 1 100%;
-                height: 600px;
-            }
-
-            .info-reveal {
-                max-height: 450px;
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
     </style>
 </head>
@@ -313,7 +302,7 @@
         <div class="hero-content fade-in">
             <h1>Software Project</h1>
             <p>We are a specialized team of Computer Science and Engineering students ready to partner with industry leaders to deliver enterprise-grade software from concept to deployment.</p>
-            <div>
+            <div class="btn-group">
                 <a href="#team" class="btn btn-primary">Meet the Team</a>
                 <a href="https://projectforum.tudelft.nl/" target="_blank" class="btn btn-secondary">Partner With Us</a>
             </div>
@@ -333,7 +322,7 @@
                         <h3>Assaf Golan</h3>
                     </div>
                     <div class="info-reveal">
-                        <p class="member-bio">Before moving to the Netherlands, I spent nearly three years leading technical operations in an Intelligence Special Operations unit. My background isn't just theoretical. I managed a team that built and maintained the infrastructure for 24/7 global intelligence ops. I care deeply about efficiency and mentorship, whether that means redesigning broken systems to massively boost output or running a 4-month technical bootcamp to train incoming recruits. Right now, I’m looking to combine that hands-on, high-stakes experience with my engineering studies to build reliable, high-impact software.</p>
+                        <p class="member-bio">Before moving to the Netherlands, I spent nearly three years leading technical operations in an Intelligence Special Operations unit. I managed a team that built and maintained the infrastructure for 24/7 global intelligence ops. I thrive on combining hands-on, high-stakes experience with engineering to build reliable, high-impact software.</p>
                         <div class="member-links">
                             <a href="https://www.linkedin.com/in/assafg/" target="_blank">LinkedIn</a>
                             <a href="assaf.pdf" target="_blank">Resume</a>
@@ -349,7 +338,7 @@
                         <h3>Diego Ferreira</h3>
                     </div>
                     <div class="info-reveal">
-                        <p class="member-bio">I have always been interested in puzzles and logic. Since an early age, I designed, developed and deployed full stack web and mobile applications (primarily, but not only, in the MERN framework), and participated in various national and international informatics olympiads, representing, and even winning a bronze medal for Portugal. I have since enrolled in TU Delft to further my education, and got two internship offers with BNY and Amazon. I am also very interested in Data Science & AI, which I have been extensively studying extracurricularly since the start of this academic year.</p>
+                        <p class="member-bio">A logic enthusiast and MERN stack developer, I've won international informatics awards and secured internships with BNY and Amazon. I am currently focusing on Data Science & AI at TU Delft to build the next generation of intelligent software.</p>
                         <div class="member-links">
                             <a href="https://www.linkedin.com/in/diego-ferreira-0597ba32b" target="_blank">LinkedIn</a>
                             <a href="diego.pdf" target="_blank">Resume</a>
@@ -365,7 +354,7 @@
                         <h3>Gustavo Bastos</h3>
                     </div>
                     <div class="info-reveal">
-                        <p class="member-bio">Driven by a curious, versatile and creative mind, I've always found myself drawn to understanding patterns and designing outside-of-the-box solutions to many of my daily problems. Following this instict and interest I am currently enrolled as a Computer Science and Engineering student at Delft University of Technology, where I've been gaining experience in data science, machine learning, among other core subjects of software development. With the aid of my previous experience in freelancing and software engineering, I'm commited to further developing my skills in practical projects and continue learning while improving my teamwork and efficiency in group environments.</p>
+                        <p class="member-bio">Driven by pattern recognition and creative problem solving, I focus on ML and data science. With a background in freelancing, I'm committed to developing practical solutions and improving teamwork efficiency in high-pressure engineering environments.</p>
                         <div class="member-links">
                             <a href="mailto:g.decamposbastos@student.tudelft.nl">Email</a>
                             <a href="gustavo.pdf" target="_blank">Resume</a>
@@ -381,7 +370,7 @@
                         <h3>Altar Moumin</h3>
                     </div>
                     <div class="info-reveal">
-                        <p class="member-bio">I have always been interested in mathematics, logic, and complex problem solving. From an early age I participated in national and international science olympiads in mathematics and physics, earning distinctions while also developing software and AI based projects such as a virtual psychological assistant and a disaster response mobile application. I am currently studying Computer Science and Engineering at Delft University of Technology, where I focus on algorithms, machine learning, and software development. Alongside my studies, I have worked on research in statistical physics under the supervision of Nihat Berker, while continuing to build software projects and collaborate in team based development environments.</p>
+                        <p class="member-bio">Specializing in algorithms and machine learning, I've built AI projects for disaster response and conducted research in statistical physics. I thrive on solving complex logic problems and collaborating in team-based development environments.</p>
                     </div>
                 </div>
             </div>
@@ -393,7 +382,7 @@
                         <h3>Vlad Manea</h3>
                     </div>
                     <div class="info-reveal">
-                        <p class="member-bio">I'm a Computer Science student at TU Delft with a deep passion for problem solving and open-source development. Aside from open-source, I also have experience with building solutions for companies, such as the development of optimization tools for logistics activities and a performance tracking dashboard, both currently used internally at a French company. I'm constantly looking for opportunities to improve my skills and knowledge by making practical, efficient software in various fields and for different purposes.</p>
+                        <p class="member-bio">Passion for problem solving and open-source. I've developed internal optimization tools and performance dashboards for European logistics firms, focusing on building practical, efficient software across diverse industries.</p>
                         <div class="member-links">
                             <a href="vlad.pdf" target="_blank">Resume</a>
                         </div>
