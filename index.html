@@ -1,411 +1,422 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CSE2000 - Professional Software Team</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <style>
-    @keyframes blob {
-      0% { transform: translate(0px, 0px) scale(1); }
-      33% { transform: translate(30px, -50px) scale(1.1); }
-      66% { transform: translate(-20px, 20px) scale(0.9); }
-      100% { transform: translate(0px, 0px) scale(1); }
-    }
-    .animate-blob {
-      animation: blob 7s infinite;
-    }
-    .animation-delay-2000 {
-      animation-delay: 2s;
-    }
-    .animation-delay-4000 {
-      animation-delay: 4s;
-    }
-    .glass-panel {
-      background: rgba(15, 23, 42, 0.6);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-    .text-glow {
-      text-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
-    }
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-    @keyframes blink {
-      50% { border-color: transparent }
-    }
-    html {
-      scroll-behavior: smooth;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TU Delft Software Project | Engineering Team</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* === 1. Variables & Global Reset === */
+        :root {
+            --bg-main: #0b0f19;
+            --bg-card: #131b2c;
+            --bg-hover: #1e293b;
+            --accent: #3b82f6;
+            --accent-hover: #60a5fa;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition-smooth);
+        }
+
+        /* === 2. Typography === */
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--text-primary);
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        /* === 3. Layout === */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        .section-padding {
+            padding: 6rem 0;
+        }
+
+        .section-separator {
+            border: 0;
+            height: 1px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0), var(--border-color), rgba(255, 255, 255, 0));
+            margin: 0 auto;
+            width: 80%;
+        }
+
+        /* === 4. Navigation === */
+        nav {
+            padding: 2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        /* === 5. Hero Section === */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            letter-spacing: -1px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 650px;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: #fff;
+            border: 1px solid var(--accent);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            margin-left: 1rem;
+        }
+
+        /* === 7. Team Roster === */
+        .team-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2.5rem;
+        }
+
+        .team-member {
+            position: relative;
+            flex: 0 1 380px;
+            height: 600px;
+            background-color: var(--bg-card);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+        }
+
+        .member-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            filter: grayscale(100%);
+            transition: var(--transition-smooth);
+        }
+
+        .member-info {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2.5rem;
+            background: linear-gradient(to top,
+                rgba(11, 15, 25, 0.98) 0%,
+                rgba(11, 15, 25, 0.85) 40%,
+                rgba(11, 15, 25, 0) 100%);
+            transition: var(--transition-smooth);
+        }
+
+        .info-static {
+            z-index: 2;
+            transition: transform 0.5s ease;
+        }
+
+        .info-static h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .info-reveal {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.5s ease;
+            transform: translateY(20px);
+        }
+
+        .member-bio {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-top: 1.5rem;
+            color: #cbd5e1;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        .member-bio::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .member-bio::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 10px;
+        }
+
+        .member-links {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: auto;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .member-links a {
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .member-links a:hover {
+            color: var(--accent-hover);
+        }
+
+        /* Hover States */
+        .team-member:hover {
+            border-color: var(--accent);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .team-member:hover .member-image {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+        }
+
+        .team-member:hover .member-info {
+            background: rgba(11, 15, 25, 0.95);
+        }
+
+        .team-member:hover .info-reveal {
+            max-height: 450px;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* === 8. Footer === */
+        footer {
+            text-align: center;
+            padding: 4rem 5%;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* === 9. Animations === */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .team-member {
+                flex: 1 1 100%;
+                height: 600px;
+            }
+
+            .info-reveal {
+                max-height: 450px;
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
-<body class="min-h-screen bg-slate-950 text-slate-50 font-sans selection:bg-cyan-500 selection:text-slate-900 overflow-x-hidden">
+<body>
 
-  <!-- Navigation -->
-  <div class="fixed top-0 w-full z-50 glass-panel border-b-0 shadow-lg shadow-black/20 select-none">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <a href="#" class="text-xl font-bold tracking-tighter flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity">
-        <i data-lucide="code" class="text-cyan-400"></i>
-        <span>CSE<span class="text-cyan-400">2000</span></span>
-      </a>
-      
-      <!-- Desktop Menu -->
-      <div class="hidden md:flex gap-8 text-sm font-medium text-slate-300">
-        <a href="#about" class="hover:text-cyan-400 transition-colors cursor-pointer">Our Motivation</a>
-        <a href="#team" class="hover:text-cyan-400 transition-colors cursor-pointer">Meet the Team</a>
-      </div>
+    <nav>
+        <div class="logo">TU Delft <span>Software Project</span></div>
+    </nav>
 
-      <!-- Mobile Menu Button -->
-      <button id="mobile-menu-btn" class="md:hidden flex items-center justify-center text-slate-300 hover:text-cyan-400 transition-colors cursor-pointer p-2">
-        <i data-lucide="menu" class="w-6 h-6"></i>
-      </button>
-    </div>
-
-    <!-- Mobile Dropdown Menu -->
-    <div id="mobile-menu" class="hidden absolute top-20 left-0 w-full glass-panel border-t border-slate-800 shadow-xl flex-col items-center py-6 gap-6 text-base font-medium text-slate-300 md:hidden">
-      <a href="#about" class="mobile-link hover:text-cyan-400 transition-colors cursor-pointer w-full text-center py-2">Our Motivation</a>
-      <a href="#team" class="mobile-link hover:text-cyan-400 transition-colors cursor-pointer w-full text-center py-2">Meet the Team</a>
-    </div>
-  </div>
-
-  <!-- Hero Section -->
-  <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg h-[400px] bg-cyan-500/30 rounded-full blur-[120px] mix-blend-screen pointer-events-none"></div>
-    <div class="absolute top-1/4 left-1/4 w-72 h-72 bg-purple-500/30 rounded-full blur-[100px] animate-blob mix-blend-screen pointer-events-none"></div>
-    <div class="absolute top-1/3 right-1/4 w-72 h-72 bg-blue-500/30 rounded-full blur-[100px] animate-blob animation-delay-2000 mix-blend-screen pointer-events-none"></div>
-    
-    <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel text-sm text-cyan-400 mb-8 border border-cyan-500/30 select-none cursor-default">
-        <span class="relative flex h-2 w-2">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
-        </span>
-        CSE2000 - Software Project
-      </div>
-      
-      <h1 class="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-8 select-none cursor-default">
-        Ready to build <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 text-glow">professional</span><br class="hidden md:block" /> software.
-      </h1>
-      
-      <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-12 leading-relaxed">
-        We aren't just completing a course requirement. We're building production-grade software. We bring industry-standard practices like Agile, relentless problem-solving, and a product-first mindset to your company's challenge.
-      </p>
-      
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 select-none">
-        <a href="#about" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold tracking-wide hover:shadow-[0_0_30px_-5px_rgba(34,211,238,0.5)] transition-all duration-300 transform hover:-translate-y-1 cursor-pointer text-center">
-          Why Choose Us
-        </a>
-        <a href="#team" class="w-full sm:w-auto px-8 py-4 rounded-full glass-panel hover:bg-slate-800 transition-all duration-300 font-bold tracking-wide border border-slate-700 cursor-pointer text-center">
-          Meet the Team
-        </a>
-      </div>
-    </div>
-
-    <a href="#about" class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer select-none">
-      <i data-lucide="chevron-down" class="w-8 h-8 text-slate-500"></i>
-    </a>
-  </section>
-
-  <!-- Motivation Section -->
-  <section id="about" class="py-16 lg:py-24 relative z-10 bg-slate-900/50 border-y border-slate-800">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="reveal-section transition-all duration-1000 transform opacity-0 translate-y-16">
-        <div class="text-center mb-10 lg:mb-16">
-          <h2 class="text-3xl md:text-5xl font-bold mb-4">Why Choose <span class="text-cyan-400">Our Team</span>?</h2>
-          <p class="text-slate-400 max-w-2xl mx-auto">Every group in this course knows the theory. We stand out by our ability to excel in practice.</p>
+    <header class="hero container">
+        <div class="hero-content fade-in">
+            <h1>Software Project</h1>
+            <p>We are a specialized team of Computer Science and Engineering students ready to partner with industry leaders to deliver enterprise-grade software from concept to deployment.</p>
+            <div>
+                <a href="#team" class="btn btn-primary">Meet the Team</a>
+                <a href="https://projectforum.tudelft.nl/" target="_blank" class="btn btn-secondary">Partner With Us</a>
+            </div>
         </div>
-        
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="glass-panel p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300">
-            <div class="w-14 h-14 rounded-xl bg-cyan-500/20 flex items-center justify-center mb-6 border border-cyan-500/30">
-              <i data-lucide="check-circle" class="w-7 h-7 text-cyan-400"></i>
+    </header>
+
+    <hr class="section-separator">
+
+    <section id="team" class="section-padding container">
+        <h2 class="section-title fade-in">Our Team</h2>
+
+        <div class="team-grid">
+            <div class="team-member fade-in">
+                <img src="assaf.png" alt="Assaf Golan" class="member-image">
+                <div class="member-info">
+                    <div class="info-static">
+                        <h3>Assaf Golan</h3>
+                    </div>
+                    <div class="info-reveal">
+                        <p class="member-bio">Before moving to the Netherlands, I spent nearly three years leading technical operations in an Intelligence Special Operations unit. My background isn't just theoretical. I managed a team that built and maintained the infrastructure for 24/7 global intelligence ops. I care deeply about efficiency and mentorship, whether that means redesigning broken systems to massively boost output or running a 4-month technical bootcamp to train incoming recruits. Right now, I’m looking to combine that hands-on, high-stakes experience with my engineering studies to build reliable, high-impact software.</p>
+                        <div class="member-links">
+                            <a href="https://www.linkedin.com/in/assafg/" target="_blank">LinkedIn</a>
+                            <a href="assaf.pdf" target="_blank">Resume</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <h3 class="text-xl font-bold mb-3">Beyond the Curriculum</h3>
-            <p class="text-slate-400 leading-relaxed">While everyone knows Java and OOP, we spend our free time mastering modern frameworks, containerization, and cloud infrastructure by continually developing, testing, and maintaining quality software.</p>
-          </div>
-          
-          <div class="glass-panel p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300">
-            <div class="w-14 h-14 rounded-xl bg-purple-500/20 flex items-center justify-center mb-6 border border-purple-500/30">
-              <i data-lucide="terminal" class="w-7 h-7 text-purple-400"></i>
+
+            <div class="team-member fade-in">
+                <img src="diego.png" alt="Diego Ferreira" class="member-image">
+                <div class="member-info">
+                    <div class="info-static">
+                        <h3>Diego Ferreira</h3>
+                    </div>
+                    <div class="info-reveal">
+                        <p class="member-bio">I have always been interested in puzzles and logic. Since an early age, I designed, developed and deployed full stack web and mobile applications (primarily, but not only, in the MERN framework), and participated in various national and international informatics olympiads, representing, and even winning a bronze medal for Portugal. I have since enrolled in TU Delft to further my education, and got two internship offers with BNY and Amazon. I am also very interested in Data Science & AI, which I have been extensively studying extracurricularly since the start of this academic year.</p>
+                        <div class="member-links">
+                            <a href="https://www.linkedin.com/in/diego-ferreira-0597ba32b" target="_blank">LinkedIn</a>
+                            <a href="diego.pdf" target="_blank">Resume</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <h3 class="text-xl font-bold mb-3">Production-Ready Mindset</h3>
-            <p class="text-slate-400 leading-relaxed">We don't just write scripts that pass edge cases. We design scalable, maintainable architectures with proper CI/CD pipelines, comprehensive testing, and clean documentation.</p>
-          </div>
-          
-          <div class="glass-panel p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300">
-            <div class="w-14 h-14 rounded-xl bg-blue-500/20 flex items-center justify-center mb-6 border border-blue-500/30">
-              <i data-lucide="database" class="w-7 h-7 text-blue-400"></i>
+
+            <div class="team-member fade-in">
+                <img src="gustavo.png" alt="Gustavo Bastos" class="member-image">
+                <div class="member-info">
+                    <div class="info-static">
+                        <h3>Gustavo Bastos</h3>
+                    </div>
+                    <div class="info-reveal">
+                        <p class="member-bio">Driven by a curious, versatile and creative mind, I've always found myself drawn to understanding patterns and designing outside-of-the-box solutions to many of my daily problems. Following this instict and interest I am currently enrolled as a Computer Science and Engineering student at Delft University of Technology, where I've been gaining experience in data science, machine learning, among other core subjects of software development. With the aid of my previous experience in freelancing and software engineering, I'm commited to further developing my skills in practical projects and continue learning while improving my teamwork and efficiency in group environments.</p>
+                        <div class="member-links">
+                            <a href="mailto:g.decamposbastos@student.tudelft.nl">Email</a>
+                            <a href="gustavo.pdf" target="_blank">Resume</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <h3 class="text-xl font-bold mb-3">Engineering Synergy</h3>
-            <p class="text-slate-400 leading-relaxed">We aren't five random students thrown together. We are a carefully chosen team, we organized ourselves in a way that covers all parts of the development process, from UI/UX to DevOps.</p>
-          </div>
+
+            <div class="team-member fade-in">
+                <img src="altar.png" alt="Altar Moumin" class="member-image">
+                <div class="member-info">
+                    <div class="info-static">
+                        <h3>Altar Moumin</h3>
+                    </div>
+                    <div class="info-reveal">
+                        <p class="member-bio">I have always been interested in mathematics, logic, and complex problem solving. From an early age I participated in national and international science olympiads in mathematics and physics, earning distinctions while also developing software and AI based projects such as a virtual psychological assistant and a disaster response mobile application. I am currently studying Computer Science and Engineering at Delft University of Technology, where I focus on algorithms, machine learning, and software development. Alongside my studies, I have worked on research in statistical physics under the supervision of Nihat Berker, while continuing to build software projects and collaborate in team based development environments.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="team-member fade-in">
+                <img src="vlad.png" alt="Vlad Manea" class="member-image">
+                <div class="member-info">
+                    <div class="info-static">
+                        <h3>Vlad Manea</h3>
+                    </div>
+                    <div class="info-reveal">
+                        <p class="member-bio">I'm a Computer Science student at TU Delft with a deep passion for problem solving and open-source development. Aside from open-source, I also have experience with building solutions for companies, such as the development of optimization tools for logistics activities and a performance tracking dashboard, both currently used internally at a French company. I'm constantly looking for opportunities to improve my skills and knowledge by making practical, efficient software in various fields and for different purposes.</p>
+                        <div class="member-links">
+                            <a href="vlad.pdf" target="_blank">Resume</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Terminal Section -->
-  <section class="py-16 lg:py-24 relative z-10 overflow-hidden">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="reveal-section transition-all duration-1000 transform opacity-0 translate-y-16">
-        <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          <div>
-            <h2 class="text-3xl md:text-5xl font-bold mb-6 select-none cursor-default">System <span class="text-purple-400">Diagnostics</span></h2>
-            <p class="text-slate-400 text-lg mb-8 leading-relaxed">
-              Look, we could give you a boring corporate pitch. Or we could just show you the raw telemetry of how our team actually functions during a sprint.
-            </p>
-            <div class="flex flex-wrap gap-4 select-none cursor-default">
-              <div class="flex items-center gap-2 text-sm font-medium bg-slate-900 px-4 py-2 rounded-lg border border-slate-800">
-                <i data-lucide="coffee" class="w-4 h-4 text-amber-500"></i>
-                <span>Coffee: 4,021 Cups</span>
-              </div>
-              <div class="flex items-center gap-2 text-sm font-medium bg-slate-900 px-4 py-2 rounded-lg border border-slate-800">
-                <i data-lucide="bug" class="w-4 h-4 text-emerald-500"></i>
-                <span>Bugs: "Features"</span>
-              </div>
-            </div>
-          </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('visible');
+                });
+            }, { threshold: 0.1 });
 
-          <div class="bg-[#0D1117] rounded-xl border border-slate-800 shadow-2xl overflow-hidden font-mono text-sm">
-            <div class="bg-slate-900 border-b border-slate-800 px-4 py-3 flex items-center gap-2 select-none cursor-default">
-              <div class="w-3 h-3 rounded-full bg-rose-500"></div>
-              <div class="w-3 h-3 rounded-full bg-amber-500"></div>
-              <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
-              <span class="ml-4 text-slate-500 text-xs">root@cse-2000:~</span>
-            </div>
-            <div class="p-6 text-slate-300 space-y-3 min-h-[250px]">
-              <div id="term-0" class="flex">
-                <span class="text-emerald-400 mr-2 select-none cursor-default">$</span>
-                <span class="border-r-2 border-slate-300 pr-1 animate-[typing_1s_steps(40,end)] overflow-hidden whitespace-nowrap inline-block">./run_enterprise_readiness_check.sh</span>
-              </div>
-              <div id="term-1" class="text-cyan-400 hidden">[INFO] Analyzing repository commit history and branch strategies...</div>
-              <div id="term-2" class="text-cyan-400 hidden">[INFO] Checking CI/CD pipeline configuration and test coverage...</div>
-              <div id="term-3" class="text-amber-400 hidden">[WARN] Sleep schedule sub-optimal. Code quality remains unaffected.</div>
-              <div id="term-4" class="text-emerald-400 hidden">[SUCCESS] Zero "It works on my machine" excuses found. Team is deployment-ready.</div>
-              <div id="term-5" class="hidden">
-                <span class="text-emerald-400 mr-2 select-none cursor-default">$</span>
-                <span class="border-r-2 border-slate-300 pr-1 animate-[blink_1s_step-end_infinite]">_</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Team Section -->
-  <section id="team" class="py-16 lg:py-32 relative z-10 bg-slate-900/30 border-t border-slate-800">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="reveal-section transition-all duration-1000 transform opacity-0 translate-y-16">
-        <div class="text-center mb-12 lg:mb-20">
-          <h2 class="text-4xl md:text-6xl font-bold mb-6 select-none cursor-default">Meet The <span class="text-cyan-400">Team</span></h2>
-        </div>
-
-        <div class="flex flex-wrap justify-center gap-6 lg:gap-8">
-          
-          <!-- Team Member 1 -->
-          <div class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-sm glass-panel rounded-3xl overflow-hidden border border-slate-800 hover:border-cyan-500/30 transition-all duration-500 group flex flex-col">
-            <div class="h-64 overflow-hidden relative select-none">
-              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent z-10"></div>
-              <img src="assaf.png" alt="Assaf Golan" draggable="false" class="w-full h-full object-cover object-center group-hover:scale-110 transition-all duration-700 grayscale-0 md:grayscale md:group-hover:grayscale-0 select-none cursor-default" />
-            </div>
-            <div class="p-8 pt-6 relative z-20 flex flex-col flex-grow">
-              <h3 class="text-2xl font-bold mb-1 select-none cursor-default">Assaf Golan</h3>
-              <p class="text-cyan-400 font-medium text-sm mb-4 select-none cursor-default">Team Lead</p>
-              <p class="text-slate-400 text-sm leading-relaxed mb-6 min-h-[80px]">Before moving to the Netherlands, I spent nearly three years leading technical operations in an Intelligence Special Operations unit. My background isn't just theoretical. I managed a team that built and maintained the infrastructure for 24/7 global intelligence ops. I care deeply about efficiency and mentorship, whether that means redesigning broken systems to massively boost output or running a 4-month technical bootcamp to train incoming recruits. Right now, I’m looking to combine that hands-on, high-stakes experience with my engineering studies to build reliable, high-impact software.</p>
-              <div class="flex items-center gap-4 pt-4 border-t border-slate-800 select-none mt-auto">
-                <a href="https://www.linkedin.com/in/assafg" class="text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-1 text-sm font-semibold cursor-pointer">
-                  <i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn
-                </a>
-                <a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-1 text-sm font-semibold ml-auto cursor-pointer">
-                  <i data-lucide="external-link" class="w-4 h-4"></i> Resume
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Team Member 2 -->
-          <div class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-sm glass-panel rounded-3xl overflow-hidden border border-slate-800 hover:border-cyan-500/30 transition-all duration-500 group flex flex-col">
-            <div class="h-64 overflow-hidden relative select-none">
-              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent z-10"></div>
-              <img src="diego.png" alt="Diego Ferreira" draggable="false" class="w-full h-full object-cover object-center group-hover:scale-110 transition-all duration-700 grayscale-0 md:grayscale md:group-hover:grayscale-0 select-none cursor-default" />
-            </div>
-            <div class="p-8 pt-6 relative z-20 flex flex-col flex-grow">
-              <h3 class="text-2xl font-bold mb-1 select-none cursor-default">Diego Ferreira</h3>
-              <p class="text-cyan-400 font-medium text-sm mb-4 select-none cursor-default">Data & Algorithms</p>
-              <p class="text-slate-400 text-sm leading-relaxed mb-6 min-h-[80px]">I have always been interested in puzzles and logic. Since an early age, I designed, developed and deployed full stack web and mobile applications (primarily, but not only, in the MERN framework), and participated in various national and international informatics olympiads, representing, and even winning a bronze medal for Portugal. I have since enrolled in TU Delft to further my education, and got two internship offers with BNY and Amazon. I am also very interested in Data Science & AI, which I have been extensively studying extracurricularly since the start of this academic year.</p>
-              <div class="flex items-center gap-4 pt-4 border-t border-slate-800 select-none mt-auto">
-                <a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-1 text-sm font-semibold cursor-pointer">
-                  <i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn
-                </a>
-                <a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-1 text-sm font-semibold ml-auto cursor-pointer">
-                  <i data-lucide="external-link" class="w-4 h-4"></i> Resume
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Team Member 3 -->
-          <div class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-sm glass-panel rounded-3xl overflow-hidden border border-slate-800 hover:border-cyan-500/30 transition-all duration-500 group flex flex-col">
-            <div class="h-64 overflow-hidden relative select-none">
-              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent z-10"></div>
-              <img src="altar.png" alt="Altar" draggable="false" class="w-full h-full object-cover object-center group-hover:scale-110 transition-all duration-700 grayscale-0 md:grayscale md:group-hover:grayscale-0 select-none cursor-default" />
-            </div>
-            <div class="p-8 pt-6 relative z-20 flex flex-col flex-grow">
-              <h3 class="text-2xl font-bold mb-1 select-none cursor-default">Altar</h3>
-              <p class="text-cyan-400 font-medium text-sm mb-4 select-none cursor-default">DevOps Engineer</p>
-              <p class="text-slate-400 text-sm leading-relaxed mb-6 min-h-[80px]">I have always been interested in mathematics, logic, and complex problem solving. From an early age I participated in national and international science olympiads in mathematics and physics, earning distinctions while also developing software and AI based projects such as a virtual psychological assistant and a disaster response mobile application. I am currently studying Computer Science and Engineering at Delft University of Technology, where I focus on algorithms, machine learning, and software development. Alongside my studies, I have worked on research in statistical physics under the supervision of Nihat Berker, while continuing to build software projects and collaborate in team based development environments.</p>
-              <div class="flex items-center gap-4 pt-4 border-t border-slate-800 select-none mt-auto">
-                <a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-1 text-sm font-semibold cursor-pointer">
-                  <i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn
-                </a>
-                <a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-1 text-sm font-semibold ml-auto cursor-pointer">
-                  <i data-lucide="external-link" class="w-4 h-4"></i> Resume
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Team Member 4 -->
-          <div class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-sm glass-panel rounded-3xl overflow-hidden border border-slate-800 hover:border-cyan-500/30 transition-all duration-500 group flex flex-col">
-            <div class="h-64 overflow-hidden relative select-none">
-              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent z-10"></div>
-              <img src="gustavo.png" alt="Gustavo Bastos" draggable="false" class="w-full h-full object-cover object-center group-hover:scale-110 transition-all duration-700 grayscale-0 md:grayscale md:group-hover:grayscale-0 select-none cursor-default" />
-            </div>
-            <div class="p-8 pt-6 relative z-20 flex flex-col flex-grow">
-              <h3 class="text-2xl font-bold mb-1 select-none cursor-default">Gustavo Bastos</h3>
-              <p class="text-cyan-400 font-medium text-sm mb-4 select-none cursor-default">UI/UX & Frontend Developer</p>
-              <p class="text-slate-400 text-sm leading-relaxed mb-6 min-h-[80px]">Driven by a curious, versatile and creative mind, I've always found myself drawn to understanding patterns and designing outside-of-the-box solutions to many of my daily problems. Following this instict and interest I am currently enrolled as a Computer Science and Engineering student at Delft University of Technology, where I've been gaining experience in data science, machine learning, among other core subjects of software development. With the aid of my previous experience in freelancing and software engineering, I'm commited to further developing my skills in practical projects and continue learning while improving my teamwork and efficiency in group environments.</p>
-              <div class="flex items-center gap-4 pt-4 border-t border-slate-800 select-none mt-auto">
-                <a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-1 text-sm font-semibold cursor-pointer">
-                  <i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn
-                </a>
-                <a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-1 text-sm font-semibold ml-auto cursor-pointer">
-                  <i data-lucide="external-link" class="w-4 h-4"></i> Resume
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Team Member 5 -->
-          <div class="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-sm glass-panel rounded-3xl overflow-hidden border border-slate-800 hover:border-cyan-500/30 transition-all duration-500 group flex flex-col">
-            <div class="h-64 overflow-hidden relative select-none">
-              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent z-10"></div>
-              <img src="vlad.png" alt="Vlad Manea" draggable="false" class="w-full h-full object-cover object-center group-hover:scale-110 transition-all duration-700 grayscale-0 md:grayscale md:group-hover:grayscale-0 select-none cursor-default" />
-            </div>
-            <div class="p-8 pt-6 relative z-20 flex flex-col flex-grow">
-              <h3 class="text-2xl font-bold mb-1 select-none cursor-default">Vlad Manea</h3>
-              <p class="text-cyan-400 font-medium text-sm mb-4 select-none cursor-default">Backend Developer</p>
-              <p class="text-slate-400 text-sm leading-relaxed mb-6 min-h-[80px]">I'm a Computer Science student at TU Delft with a deep passion for problem solving and open-source development. Aside from open-source, I also have experience with building solutions for companies, such as the development of optimization tools for logistics activities and a performance tracking dashboard, both currently used internally at a French company. I'm constantly looking for opportunities to improve my skills and knowledge by making practical, efficient software in various fields and for different purposes.</p>
-              <div class="flex items-center gap-4 pt-4 border-t border-slate-800 select-none mt-auto">
-                <a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-1 text-sm font-semibold cursor-pointer">
-                  <i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn
-                </a>
-                <a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-1 text-sm font-semibold ml-auto cursor-pointer">
-                  <i data-lucide="external-link" class="w-4 h-4"></i> Resume
-                </a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="py-6 border-t border-slate-800 bg-slate-950/80 backdrop-blur-md relative z-10">
-    <div class="max-w-7xl mx-auto px-6 flex flex-row items-center justify-between gap-4 select-none">
-      <div class="flex flex-col items-center md:items-start gap-2">
-        <a href="#" class="text-lg font-bold tracking-tighter flex items-center gap-2 hover:opacity-80 transition-opacity">
-          <i data-lucide="code" class="text-cyan-400 w-5 h-5"></i>
-          <span>CSE<span class="text-cyan-400">2000</span></span>
-        </a>
-        <!-- <p class="text-slate-500 text-xs">TU Delft CSE2000 - Software Project</p> -->
-      </div>
-
-      <!-- <div class="flex flex-col items-center gap-4">
-        <p class="text-slate-400 text-sm font-medium collapse">Built with precision.</p>
-      </div> -->
-
-      <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="group flex items-center gap-2 px-5 py-2.5 rounded-full glass-panel text-slate-400 hover:text-cyan-400 hover:border-cyan-500/50 transition-all duration-300 text-sm font-bold border border-slate-800">
-        Back to Top
-        <i data-lucide="arrow-up" class="w-4 h-4 group-hover:-translate-y-1 transition-transform"></i>
-      </button>
-    </div>
-  </footer>
-
-  <script>
-    lucide.createIcons();
-
-    // Mobile Menu Logic
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const mobileLinks = document.querySelectorAll('.mobile-link');
-
-    mobileMenuBtn.addEventListener('click', () => {
-      if (mobileMenu.classList.contains('hidden')) {
-        mobileMenu.classList.remove('hidden');
-        mobileMenu.classList.add('flex');
-      } else {
-        mobileMenu.classList.add('hidden');
-        mobileMenu.classList.remove('flex');
-      }
-    });
-
-    mobileLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        mobileMenu.classList.remove('flex');
-      });
-    });
-
-    // Reveal on Scroll Logic
-    const revealElements = document.querySelectorAll('.reveal-section');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.remove('opacity-0', 'translate-y-16');
-          entry.target.classList.add('opacity-100', 'translate-y-0');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    revealElements.forEach(el => observer.observe(el));
-
-    // Terminal Logic
-    let termStep = 0;
-    const termLines = [
-      document.getElementById('term-1'),
-      document.getElementById('term-2'),
-      document.getElementById('term-3'),
-      document.getElementById('term-4'),
-      document.getElementById('term-5')
-    ];
-
-    const termTimer = setInterval(() => {
-      if (termStep < termLines.length) {
-        termLines[termStep].classList.remove('hidden');
-        if (termStep === 4) {
-          termLines[termStep].classList.add('flex');
-        } else {
-          termLines[termStep].classList.add('block');
-        }
-        termStep++;
-      } else {
-        clearInterval(termTimer);
-      }
-    }, 1500);
-  </script>
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+            setTimeout(() => {
+                const heroContent = document.querySelector('.hero-content');
+                if (heroContent) heroContent.classList.add('visible');
+            }, 100);
+        });
+    </script>
 </body>
-
 </html>
-
-
-
-
