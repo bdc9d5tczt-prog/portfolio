@@ -148,17 +148,17 @@
             border: 1px solid var(--border-color);
         }
 
-        /* === 7. Team Roster (FIXED TO CENTER 5 MEMBERS) === */
+        /* === 7. Team Roster === */
         .team-grid {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center; /* This centers the items on all rows */
+            justify-content: center;
             gap: 2rem;
         }
 
         .team-member {
             position: relative;
-            flex: 1 1 350px; /* Allows cards to grow/shrink but centers them */
+            flex: 1 1 350px;
             max-width: 380px;
             height: 550px;
             background-color: var(--bg-card);
@@ -174,7 +174,7 @@
             height: 100%;
             object-fit: cover;
             object-position: top;
-            filter: grayscale(100%);
+            filter: grayscale(40%) brightness(1.1); 
             transition: var(--transition-smooth);
         }
 
@@ -186,8 +186,8 @@
             justify-content: flex-end;
             padding: 2rem;
             background: linear-gradient(to top,
-                rgba(11, 15, 25, 0.98) 0%,
-                rgba(11, 15, 25, 0.85) 45%,
+                rgba(11, 15, 25, 0.95) 0%,
+                rgba(11, 15, 25, 0.6) 45%,
                 rgba(11, 15, 25, 0) 100%);
             transition: var(--transition-smooth);
         }
@@ -195,6 +195,7 @@
         .info-static h3 {
             font-size: 1.5rem;
             margin-bottom: 0.2rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
         }
 
         .info-reveal {
@@ -212,8 +213,9 @@
             line-height: 1.6;
             margin-top: 1.2rem;
             color: #cbd5e1;
-            overflow-y: auto;
-            padding-right: 5px;
+            /* FIXED: Removed scrollbar by setting overflow to hidden */
+            overflow: hidden; 
+            padding-right: 0;
         }
 
         .member-links {
@@ -239,7 +241,7 @@
                 box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
             }
             .team-member:hover .member-image {
-                filter: grayscale(0%);
+                filter: grayscale(0%) brightness(1);
                 transform: scale(1.05);
             }
             .team-member:hover .info-reveal {
@@ -267,7 +269,7 @@
             }
             .team-member {
                 height: 500px;
-                flex: 1 1 100%; /* Full width on mobile */
+                flex: 1 1 100%;
             }
             .info-reveal {
                 max-height: 350px;
@@ -275,7 +277,7 @@
                 transform: translateY(0);
             }
             .member-image {
-                filter: grayscale(0%);
+                filter: grayscale(0%) brightness(1.1);
             }
         }
 
@@ -372,6 +374,10 @@
                     <div class="info-reveal">
                         <p class="member-bio">Specializing in algorithms and machine learning, I've built AI projects for disaster response and conducted research in statistical physics. I thrive on solving complex logic problems and collaborating in team-based development environments.</p>
                     </div>
+                    <div class="member-links">
+                        <a href="https://www.linkedin.com/in/altar-moumin" target="_blank">LinkedIn</a>
+                        <a href="mailto:a.k.moumin@student.tudelft.nl">Email</a>
+                    </div>
                 </div>
             </div>
 
@@ -384,6 +390,7 @@
                     <div class="info-reveal">
                         <p class="member-bio">Passion for problem solving and open-source. I've developed internal optimization tools and performance dashboards for European logistics firms, focusing on building practical, efficient software across diverse industries.</p>
                         <div class="member-links">
+                            <a href="https://www.linkedin.com/in/vlad-manea-85b649391" target="_blank">LinkedIn</a>
                             <a href="vlad.pdf" target="_blank">Resume</a>
                         </div>
                     </div>
